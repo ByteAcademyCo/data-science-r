@@ -30,7 +30,7 @@ Brought to you by [Lesley Cordero](http://www.columbia.edu/~lc2958) and [ADI](ht
 - [6.0 Final Exercise]($60-final-exercise)
 - [7.0 Final Words](#60-final-words)
     + [7.1 Resources](#61-resources)
-    + [7.2 More!](#72-more)
+    + [7.2 Mini Courses](#72-mini-courses)
 
 
 ## 0.0 Setup
@@ -61,66 +61,88 @@ install.packages("downloader")
 
 ## 1.0 Background
 
-### 1.1 Machine Learning
+Before we head into an actual data science problem demo, let's go over some vital background information. 
+
+### 1.1 What is Data Science?
+
+Data Science is the application of statistical and mathematical methods to problems involving sets of data. In other words, it's taking techniques developed in the areas of statistics and math and using them to learn from some sort of data source. 
+
+#### 1.1.1 What do you mean by data? 
+
+Data is essentially anything that can be recorded or transcribed - numerical, text, images, sounds, anything!
+
+#### 1.1.2 What background do you need to work on a data science problem?
+
+It depends entirely on what you're working on, but generally speaking, you should be comfortable with probability, statistics, and some linear algebra.  
+
+### 1.2 Is data science the same as machine learning?
+
+Well, no. They do have overlap, but they are not the same! Whereas the topic of machine learning involves lots of theoretical components we won't worry about, data science takes these methods and applies them to the real world. It's important to note that studying these theoretical components can be very useful to your understanding of data science, however!
+
+### 1.3 Why is Data Science important? 
+
+Data Science has so much potential! By using data in creative and innovative ways, we can gain a lot of insight on the world, whether that be in economics, biology, sociology, math - any topic you can think of, data science has its role. 
+
+### 1.4 Machine Learning
 
 Generally speaking, Machine Learning can be split into three types of learning: supervised, unsupervised, and reinforcement learning. 
 
-#### 1.1.1 Supervised Learning
+#### 1.4.1 Supervised Learning
 
 This algorithm consist of a target / outcome variable (or dependent variable) which is to be predicted from a given set of predictors (independent variables). Using these set of variables, we generate a function that map inputs to desired outputs. The training process continues until the model achieves a desired level of accuracy on the training data. Examples of Supervised Learning: Regression, Decision Tree, Random Forest, KNN, Logistic Regression etc.
 
 
-#### 1.1.2 Unsupervised Learning
+#### 1.4.2 Unsupervised Learning
 
 In this algorithm, we do not have any target or outcome variable to predict / estimate.  It is used for clustering population in different groups, which is widely used for segmenting customers in different groups for specific intervention. Examples of Unsupervised Learning: Apriori algorithm, K-means.
 
 
-#### 1.1.2 Reinforcement Learning
+#### 1.4.2 Reinforcement Learning
 
 Using this algorithm, the machine is trained to make specific decisions. It works this way: the machine is exposed to an environment where it trains itself continually using trial and error. This machine learns from past experience and tries to capture the best possible knowledge to make accurate business decisions. Example of Reinforcement Learning: Markov Decision Process.
 
 
-### 1.2 Data 
+### 1.5 Data 
 
 As a data scientist, knowing the different forms data takes is highly important. 
 
-#### 1.2.1 Training vs Test Data
+#### 1.5.1 Training vs Test Data
 
 When it comes time to train your classifier or model, you're going to need to split your data into <b>testing</b> and <b>training</b> data. 
 
 Typically, the majority of your data will go towards your training data, while only 10-25% of your data will go towards testing. It's important to note there is no overlap between the two. Should you have overlap or use all your training data for testing, your accuracy results will be wrong. Any classifier that's tested on the data it's training is obviously going to do very well since it will have observed those results before, so the accuracy will be high, but wrongly so. 
 
 
-#### 1.2.2 Open Data 
+#### 1.5.2 Open Data 
 
 What's open data, you ask? Simple, it's data that's freely  for anyone to use! Some examples include things you might have already heard of, like APIs, online zip files, or by scraping data!
 
 You might be wondering where this data comes from - well, it can come from a variety of sources, but some common ones include large tech companies like Facebook, Google, Instagram. Others include large institutions, like the US government! Otherwise, you can find tons of data from all sorts of organizations and individuals. 
 
-### 1.3 Overfitting vs Underfitting
+### 1.6 Overfitting vs Underfitting
 
 In section 1.2.1, we mentioned the concept of overfitting your data. The concept of overfitting refers to creating a model that doesn't generalize to your model. In other words, if your model overfits your data, that means it's learned your data <i>too</i> much - it's essentially memorized it. This might not seem like it would be a problem at first, but a model that's just "memorized" your data is one that's going to perform poorly on new, unobserved data. 
 
 Underfitting, on the other hand, is when your model is <i>too</i> generalized to your data. This model will also perform poorly on new unobserved data. This usually means we should increase the number of considered features, which will expand the hypothesis space. 
 
 
-### 1.4 Glossary 
+### 1.7 Glossary 
 
-#### 1.4.1 Factors
+#### 1.7.1 Factors
 
 Factors in R are stored as a vector of integer values with a corresponding set of character values to use when the factor is displayed. 
 
-#### 1.4.2 Corpus
+#### 1.7.2 Corpus
 
 A Corpus (Plural: Corpora) is a collection of written texts that serve as our datasets.
 
-#### 1.4.3 Bias
+#### 1.7.3 Bias
 
 In machine learning, bias is the tendency for a learner to consistently learn the same wrong thing. 
 
-#### 1.4.4 Variance 
+#### 1.7.4 Variance 
 
-Variance is the error from sensitivity to small fluctuations in the training set. High variance can cause overfitting since it causes a classifer to  model the random noise in the training data rather than the intended outputs.
+Variance is the error from sensitivity to small fluctuations in the training set. High variance can cause overfitting since it causes a classifier to  model the random noise in the training data rather than the intended outputs.
 
 ## 2.0 Data Preparation
 
@@ -134,7 +156,7 @@ library(dplyr)
 library(downloader)
 ```
 
-Using the data available in [this]() repo, we''ll load the data into R:
+Using the data available in [this](https://github.com/lesley2958/data-science-r/blob/master/msleep_ggplot2.csv) repo, we''ll load the data into R:
 
 ``` R
 url <- "https://raw.githubusercontent.com/genomicsclass/dagdata/master/inst/extdata/msleep_ggplot2.csv"
@@ -167,7 +189,7 @@ head(select(msleep, name:order))
 
 #### 2.1.2 filter()
 
-Using the `filter()` method in dplyr we can select roles that meet a certain criterion, such as in the following:
+Using the `filter()` method in dplyr we can select rows that meet a certain criterion, such as in the following:
 
 ``` R
 filter(msleep, sleep_total >= 16)
@@ -180,11 +202,11 @@ filter(msleep, sleep_total >= 16, bodywt >= 1)
 
 #### 2.1.3 Functions
 
-`arrange()`: re-order or arrange rows
-`filter()`: filter rows
-`group_by()`: allows for group operations in the “split-apply-combine” concept
-`mutate()`: create new columns
-`select()`: select columns
+`arrange()`: re-order or arrange rows <br>
+`filter()`: filter rows <br>
+`group_by()`: allows for group operations in the “split-apply-combine” concept <br>
+`mutate()`: create new columns <br>
+`select()`: select columns <br>
 `summarise()`: summarise values
 
 
@@ -195,7 +217,6 @@ R gives you the opportunity to go more in-depth with the summary() function. Thi
 
 ``` R
 summary(iris) 
-
 ```
 
 ### 3.2 xda
@@ -241,6 +262,9 @@ layout(margin = list(l = 40, b = 40))
 
 ### 5.1 Random Forests
 
+Random forest is a great choice for nearly any prediction problem, even non-linear ones, that belongs to a larger class of machine learning algorithms called ensemble methods.
+
+
 #### 5.1.1 RFinfer
 
 RFinfer provides functions that use the infinitesimal jackknife to generate predictions and prediction variances from random forest models.
@@ -284,10 +308,10 @@ Then we get:
 Next, we'll plot the predictions with their 95% confidence intervals in accordance to the actual values.
 
 ``` R
-ggplot(rf.preds,aes(d.aq$Ozone,pred)) +
-  geom_abline(intercept=0,slope=1,lty=2, color='#999999') +
-   geom_point() +
-   geom_errorbar(aes(ymin=l.ci,ymax=u.ci,height=0.15)) +
+ggplot(rf.preds,aes(d.aq$Ozone,pred)) + 
+    geom_abline(intercept=0,slope=1,lty=2, color='#999999')  +
+   geom_point()  +
+   geom_errorbar(aes(ymin=l.ci,ymax=u.ci,height=0.15)) + 
    xlab('Actual') + ylab('Predicted') +
    theme_bw()
 ```
@@ -471,10 +495,20 @@ This is a very good accuracy. It seems that our bag of words approach works nice
 [R Bloggers](https://www.r-bloggers.com/) <br>
 [kdnuggets](http://www.kdnuggets.com/)
 
-### 7.2 More!
 
-Join us for more workshops! 
 
-[Tuesday, December 27th, 6:00pm: Python vs R for Data Science](https://www.eventbrite.com/e/december-data-series-python-vs-r-for-data-science-tickets-30341073969?aff=erelpanelorg) <br>
-[Thursday, December 29th, 6:00pm: Deep Learning Meets NLP: Intro to word2vec](https://www.eventbrite.com/e/december-data-science-series-deep-learning-meets-nlp-intro-to-word2vec-tickets-30494609197?aff=erelpanelorg)
+### 7.2 Mini Courses
+
+Learn about courses [here](www.byteacademy.co/all-courses/data-science-mini-courses/).
+
+[Python 101: Data Science Prep](https://www.eventbrite.com/e/python-101-data-science-prep-tickets-30980459388) <br>
+[Intro to Data Science & Stats with R](https://www.eventbrite.com/e/data-sci-109-intro-to-data-science-statistics-using-r-tickets-30908877284) <br>
+[Data Acquisition Using Python & R](https://www.eventbrite.com/e/data-sci-203-data-acquisition-using-python-r-tickets-30980705123) <br>
+[Data Visualization with Python](https://www.eventbrite.com/e/data-sci-201-data-visualization-with-python-tickets-30980827489) <br>
+[Fundamentals of Machine Learning and Regression Analysis](https://www.eventbrite.com/e/data-sci-209-fundamentals-of-machine-learning-and-regression-analysis-tickets-30980917759) <br>
+[Natural Language Processing with Data Science](https://www.eventbrite.com/e/data-sci-210-natural-language-processing-with-data-science-tickets-30981006023) <br>
+[Machine Learning with Data Science](https://www.eventbrite.com/e/data-sci-309-machine-learning-with-data-science-tickets-30981154467) <br>
+[Databases & Big Data](https://www.eventbrite.com/e/data-sci-303-databases-big-data-tickets-30981182551) <br>
+[Deep Learning with Data Science](https://www.eventbrite.com/e/data-sci-403-deep-learning-with-data-science-tickets-30981221668) <br>
+[Data Sci 500: Projects](https://www.eventbrite.com/e/data-sci-500-projects-tickets-30981330995)
 
