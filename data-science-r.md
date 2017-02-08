@@ -45,6 +45,14 @@ Download [R](https://www.r-project.org/) and [R Studio](https://www.rstudio.com/
 
 ### 0.2 Packages
 
+Next, to install the R packages, cd into your workspace, and enter the following, very simple, command into your bash: 
+
+```
+R
+```
+
+This will prompt a session in R! From here, you can install any needed packages. For the sake of this tutorial, enter the following into your terminal R session:
+
 ``` 
 install.packages("ggvis”)
 install.packages("gmodels")
@@ -58,6 +66,29 @@ install.packages("lubridate")
 install.packages("compare")
 install.packages("downloader")
 ```
+
+### 0.3 Virtual Environment
+
+If you'd like to work in a virtual environment, you can set it up as follows: 
+```
+pip3 install virtualenv
+virtualenv your_env
+```
+And then launch it with: 
+```
+source your_env/bin/activate
+```
+
+To execute the visualizations in matplotlib, do the following:
+
+```
+cd ~/.matplotlib
+vim matplotlibrc
+```
+And then, write `backend: TkAgg` in the file. Now you should be set up with your virtual environment!
+
+Cool, now we're ready to start!
+
 
 ## 1.0 Background
 
@@ -486,8 +517,9 @@ So then we get
 This is a very good accuracy. It seems that our bag of words approach works nicely with this particular problem.
 
 
-
 ## 7.0 Final Words
+
+This was a brief overview of Data Science and its different components. Obviously there is more to each component we went through, but this tutorial should have given you an idea of what a data problem should look like. 
 
 ### 7.1 Resources
 
